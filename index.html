@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUG - Türkiye Ulusal Gözlemevleri Yıldız Haritası</title>
+    <meta name="description"
+        content="Türkiye Ulusal Gözlemevleri için interaktif, kaydırılabilir yıldız haritası ve takımyıldızları bilgi sistemi.">
+    <!-- Modern Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Background Animated Starfield Canvas -->
+    <canvas id="starfield" aria-hidden="true"></canvas>
+
+    <!-- Main Application Header -->
+    <header class="main-header">
+        <h1>TUG - Türkiye Ulusal Gözlemevleri</h1>
+        <h2>Yıldız Haritası</h2>
+    </header>
+
+    <!-- Search Section -->
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Takımyıldızı Ara..." aria-label="Takımyıldızı Ara"
+            autocomplete="off">
+        <ul id="search-results" class="hidden"></ul>
+    </div>
+
+    <!-- Draggable Map Region (Movable area containing constellations) -->
+    <main id="universe-container" aria-label="Etkileşimli Yıldız Haritası">
+        <!-- SVG Canvas for Constellation Lines -->
+        <svg id="constellation-svg" width="4000" height="4000" xmlns="http://www.w3.org/2000/svg"></svg>
+
+        <!-- HTML overlay for interactive stellar nodes -->
+        <div id="star-nodes-container"></div>
+    </main>
+
+    <!-- Detailed Information Card (Glassmorphism UI) -->
+    <aside id="info-card" class="glass-panel hidden" aria-live="polite">
+        <button id="close-btn" aria-label="Bilgi Kartını Kapat">&times;</button>
+        <div class="card-content">
+            <!-- Isolated SVG Preview of the selected constellation -->
+            <div id="constellation-preview" class="preview-container"></div>
+
+            <h3 id="constellation-name">Takımyıldız Adı</h3>
+            <div id="constellation-info">Burada takımyıldız hakkında bilgiler yer alacak.</div>
+            <div class="constellation-meta">
+                <div class="meta-item">
+                    <span class="meta-icon">★</span>
+                    <div class="meta-text">
+                        <span class="meta-label">En Parlak Yıldız</span>
+                        <span id="meta-brightest" class="meta-value">Bilinmiyor</span>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-icon">⛶</span>
+                    <div class="meta-text">
+                        <span class="meta-label">Kapladığı Alan</span>
+                        <span id="meta-area" class="meta-value">Bilinmiyor</span>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-icon">⌘</span>
+                    <div class="meta-text">
+                        <span class="meta-label">Takımyıldız Ailesi</span>
+                        <span id="meta-family" class="meta-value">Bilinmiyor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Application Logic -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
