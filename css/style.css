@@ -384,31 +384,6 @@ body {
     background: rgba(255, 255, 255, 0.3);
 }
 
-/* Responsive Scaling for smaller screens */
-@media (max-width: 768px) {
-    .main-header h1 {
-        font-size: 1.5rem;
-    }
-
-    .main-header h2 {
-        font-size: 0.85rem;
-    }
-
-    #info-card {
-        width: calc(100% - 40px);
-        left: 20px;
-        right: 20px;
-        top: auto;
-        bottom: 20px;
-        transform: translateY(0);
-        max-height: 60vh;
-    }
-
-    #info-card.hidden {
-        transform: translateY(120%);
-    }
-}
-
 /* --- Constellation Meta Info --- */
 .constellation-meta {
     display: grid;
@@ -465,4 +440,60 @@ body {
     font-size: 0.85rem;
     color: #fff;
     font-weight: 600;
+}
+
+/* Responsive Scaling for smaller screens */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .main-header h2 {
+        font-size: 0.85rem;
+    }
+
+    /* Mobile search styling */
+    #search-container {
+        top: 20px;
+        right: 20px;
+        left: 20px;
+        width: auto;
+    }
+
+    /* Mobile Info Card styling */
+    #info-card {
+        width: calc(100% - 40px);
+        left: 20px;
+        right: 20px;
+        top: auto;
+        bottom: 20px;
+        transform: translateY(0);
+        max-height: 50vh; /* Make sure it completely fits */
+        padding: 16px;
+    }
+
+    .preview-container {
+        height: 120px; /* Small preview on mobile */
+        margin-bottom: 12px;
+    }
+
+    #info-card.hidden {
+        transform: translateY(120%);
+    }
+
+    /* Increase hit area for tiny stars on fat fingers */
+    .star-node {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Make text size legible inside info card on small screen */
+    #constellation-info {
+        font-size: 0.85rem;
+    }
+    
+    /* Make constellation lines thicker for fat finger clicks */
+    .constellation-line {
+        stroke-width: 4;
+    }
 }

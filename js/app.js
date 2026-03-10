@@ -94,6 +94,17 @@ document.addEventListener("DOMContentLoaded", () => {
         container.style.transition = "none"; // Instant drag, no lag
     });
 
+    container.addEventListener("touchstart", (e) => {
+        if (e.touches.length !== 1) return;
+        isDragging = true;
+        startX = e.touches[0].clientX - currentX;
+        startY = e.touches[0].clientY - currentY;
+
+        clickStartX = e.touches[0].clientX;
+        clickStartY = e.touches[0].clientY;
+        container.style.transition = "none";
+    }, { passive: true });
+
     window.addEventListener("mousemove", (e) => {
         if (!isDragging) return;
         e.preventDefault();
@@ -105,10 +116,25 @@ document.addEventListener("DOMContentLoaded", () => {
         container.style.transform = `translate(${currentX}px, ${currentY}px)`;
     });
 
+    window.addEventListener("touchmove", (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+        // Don't preventDefault here if we want to allow scrolling in other forms, but this is a map so we do.
+        // We use { passive: false } if we need preventDefault, however, it's safer for map dragging 
+        // to let the browser handle defaults or use touch-action: none in CSS.
+        currentX = e.touches[0].clientX - startX;
+        currentY = e.touches[0].clientY - startY;
+
+        clampBounds();
+        container.style.transform = `translate(${currentX}px, ${currentY}px)`;
+    }, { passive: true });
+
     window.addEventListener("mouseup", () => {
         isDragging = false;
     });
     window.addEventListener("mouseleave", () => {
+        isDragging = false;
+    });
+    window.addEventListener("touchend", () => {
         isDragging = false;
     });
 
@@ -143,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 domStar.addEventListener("click", (e) => {
                     e.stopPropagation();
                     const dist = Math.abs(e.clientX - clickStartX) + Math.abs(e.clientY - clickStartY);
-                    if (dist > 5) return; // Ignore drag end 
+                    if (dist > 15) return; // Ignore drag end 
                     openInfoCard(constellation);
                 });
 
@@ -166,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     line.addEventListener("click", (e) => {
                         e.stopPropagation();
                         const dist = Math.abs(e.clientX - clickStartX) + Math.abs(e.clientY - clickStartY);
-                        if (dist > 5) return;
+                        if (dist > 15) return;
                         openInfoCard(constellation);
                     });
 
@@ -178,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
             group.addEventListener("click", (e) => {
                 e.stopPropagation();
                 const dist = Math.abs(e.clientX - clickStartX) + Math.abs(e.clientY - clickStartY);
-                if (dist > 5) return;
+                if (dist > 15) return;
                 openInfoCard(constellation);
             });
 
@@ -190,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Click background to close
     container.addEventListener("click", (e) => {
         const dist = Math.abs(e.clientX - clickStartX) + Math.abs(e.clientY - clickStartY);
-        if (dist > 5) return;
+        if (dist > 15) return; // increased threshold for mobile
         closeInfoCard();
     });
 
