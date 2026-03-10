@@ -309,6 +309,7 @@ body {
     justify-content: center;
     color: var(--text-muted);
     font-size: 20px;
+    z-index: 100; /* Ensure it stays above card content */
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -492,6 +493,8 @@ body {
     #close-btn {
         top: 15px;
         right: 15px;
+        z-index: 100; /* Ensure click handler works on mobile overlapping areas */
+        padding: 5px; /* Increase hit surface slightly without visual change */
         background: rgba(255, 255, 255, 0.1);
     }
 
