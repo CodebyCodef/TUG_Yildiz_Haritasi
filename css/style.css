@@ -33,11 +33,8 @@ body {
     /* Hide scrollbars; we navigate by dragging */
     user-select: none;
     /* Prevent accidental text selection while dragging */
-    position: fixed;
-    top: 0;
-    left: 0;
+    min-height: 100vh;
     width: 100vw;
-    height: 100vh;
 }
 
 /* --- Starfield Layer --- */
@@ -458,7 +455,7 @@ body {
 
     /* Mobile search styling */
     #search-container {
-        top: 90px; /* Move search underneath header */
+        top: 15px;
         right: 15px;
         left: 15px;
         width: auto;
@@ -490,9 +487,7 @@ body {
     }
 
     .preview-container {
-        display: flex; /* Force show SVG preview container on mobile */
-        height: 120px;
-        min-height: 120px;
+        display: none; /* Hide the SVG completely on mobile to save space */
     }
     
     #close-btn {
