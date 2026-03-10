@@ -487,7 +487,8 @@ body {
     }
 
     .preview-container {
-        display: none; /* Hide the SVG completely on mobile to save space */
+        display: flex; /* Re-enable SVG preview on mobile */
+        height: 120px; /* Make it slightly smaller to fit better */
     }
 
     #close-btn {
