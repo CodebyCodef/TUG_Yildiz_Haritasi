@@ -271,7 +271,7 @@ body {
 #info-card {
     position: fixed;
     left: 40px;
-    top: 50%;
+    top: 55%;
     transform: translateY(-50%) translateX(0);
     width: 340px;
     max-height: 85vh;
@@ -309,7 +309,8 @@ body {
     justify-content: center;
     color: var(--text-muted);
     font-size: 20px;
-    z-index: 100; /* Ensure it stays above card content */
+    z-index: 100;
+    /* Ensure it stays above card content */
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -460,9 +461,10 @@ body {
         left: 15px;
         width: auto;
     }
-    
+
     #search-input {
-        background: rgba(15, 23, 42, 0.85); /* Make it darker and more readable */
+        background: rgba(15, 23, 42, 0.85);
+        /* Make it darker and more readable */
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
         padding: 12px 20px;
     }
@@ -479,22 +481,27 @@ body {
         padding: 20px;
         border-radius: 24px;
     }
-    
+
     .card-content {
-        overflow-y: auto; /* Enable vertical scrolling */
+        overflow-y: auto;
+        /* Enable vertical scrolling */
         overflow-x: hidden;
-        padding-right: 5px; /* Prevent scrollbar overlap */
+        padding-right: 5px;
+        /* Prevent scrollbar overlap */
     }
 
     .preview-container {
-        display: none; /* Hide the SVG completely on mobile to save space */
+        display: none;
+        /* Hide the SVG completely on mobile to save space */
     }
-    
+
     #close-btn {
         top: 15px;
         right: 15px;
-        z-index: 100; /* Ensure click handler works on mobile overlapping areas */
-        padding: 5px; /* Increase hit surface slightly without visual change */
+        z-index: 100;
+        /* Ensure click handler works on mobile overlapping areas */
+        padding: 5px;
+        /* Increase hit surface slightly without visual change */
         background: rgba(255, 255, 255, 0.1);
     }
 
@@ -512,7 +519,7 @@ body {
     #constellation-info {
         font-size: 0.85rem;
     }
-    
+
     /* Make constellation lines thicker for fat finger clicks */
     .constellation-line {
         stroke-width: 4;
